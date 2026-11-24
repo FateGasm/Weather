@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/*
+   --c-text  -> main text
+   --c-muted -> field labels
+   --c-temp -> big temperature
+   --c-details -> location, time, humidity row
+   --c-button -> search button
+   --c-surface -> card, history panel, input fields, clear button
+   --c-surface-border
+   --c-row  -> history list
+   --c-history-time -> history list timestamp
+   --c-icon-btn  -> history list buttons, theme toggle
+   --c-icon-btn-border
+   --c-icon
+   --c-page
+*/
+:root {
+  --c-page: #b9a2e5; /* shown while the background image loads */
+  --c-text: #000000;
+  --c-muted: #666666;
+  --c-temp: #6C40B5;
+  --c-details: #666666;
+  --c-button: #6C40B5;
+  --c-surface: #FFFFFF33;
+  --c-surface-border: #FFFFFF80;
+  --c-row: #FFFFFF66;
+  --c-history-time: #000000;
+  --c-icon-btn: #FFFFFF;
+  --c-icon-btn-border: transparent;
+  --c-icon: #00000080;
+}
+
+[data-theme="dark"] {
+  --c-page: #3b2a8f;
+  --c-text: #FFFFFF;
+  --c-muted: #FFFFFF66;
+  --c-temp: #FFFFFF;
+  --c-details: #FFFFFF;
+  --c-button: #28124D;
+  --c-surface: #1A1A1A4D;
+  --c-surface-border: transparent;
+  --c-row: #1A1A1A80;
+  --c-history-time: #FFFFFF80;
+  --c-icon-btn: transparent;
+  --c-icon-btn-border: rgb(255 255 255 / 0.4);
+  --c-icon: #FFFFFF80;
+}
+
+@theme inline {
+  --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-text: var(--c-text);
+  --color-muted: var(--c-muted);
+  --color-temp: var(--c-temp);
+  --color-details: var(--c-details);
+  --color-button: var(--c-button);
+  --color-surface: var(--c-surface);
+  --color-surface-border: var(--c-surface-border);
+  --color-row: var(--c-row);
+  --color-history-time: var(--c-history-time);
+  --color-icon-btn: var(--c-icon-btn);
+  --color-icon-btn-border: var(--c-icon-btn-border);
+  --color-icon: var(--c-icon);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+body {
+  min-height: 100svh;
+  color: var(--c-text);
+  background: var(--c-page) url("./assets/bg-light.png") center / cover fixed;
+}
+
+[data-theme="dark"] body {
+  background-image: url("./assets/bg-dark.png");
+}
